@@ -1,0 +1,124 @@
+:root {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
+}
+
+body {
+  background-color: var(--bs-light);
+  font-size: 1.5rem;
+  color: var(--bs-gray-dark);
+}
+
+header {
+  position: relative;
+  height: 8vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+main {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 40%;
+}
+
+table {
+  margin-top: 1rem;
+  border-spacing: 0.5rem 1rem;
+}
+
+td {
+  margin-left: 1rem;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.input {
+  width: 70%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+
+.addButton {
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--bs-success);
+  color: var(--bs-white);
+  font-size: 1rem;
+}
+
+.trash {
+  visibility: hidden;
+  cursor: pointer;
+  width: 1.2rem;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.mode {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  cursor: pointer;
+  width: 1.5rem;
+}

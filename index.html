@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple todo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Simple TODO</h1>
+      <img class="mode" src="asset/moon-stars-fill.svg" alt="darkmode" />
+    </header>
+    <main>
+      <div>
+        <input class="input" type="text" placeholder="Add todo" autofocus />
+        <button class="addButton">Add</button>
+      </div>
+      <table></table>
+    </main>
+
+    <script>
+      var input = document.querySelector(".input");
+      var table = document.querySelector("table");
+      var mode = document.querySelector(".mode");
+      var lightMode = true;
+
+      document.querySelector(".addButton").addEventListener("click", () => {
+        let value = input.value;
+
+        if (value.length > 0) {
+          let row = table.insertRow(0);
+
+          let cell0 = row.insertCell(0);
+          let cell1 = row.insertCell(1);
+          let cell2 = row.insertCell(2);
+
+          let checkBox = document.createElement("input");
+          checkBox.setAttribute("type", "checkbox");
+          cell0.insertBefore(checkBox, cell0.firstChild);
+
+          cell1.innerText = value;
+
+          let img = document.createElement("img");
+          img.setAttribute(
+            "src",
+            lightMode ? "asset/trash.svg" : "asset/trash-fill.svg"
+          );
+          img.setAttribute("alt", "delete");
+          img.classList.add("trash");
+
+          cell2.insertBefore(img, cell2.firstChild);
+
+          checkBox.addEventListener("click", (event) => {
+            let checkBox = event.target;
+            checkBox.parentNode.parentNode.classList.toggle("done");
+          });
+
+          img.addEventListener("click", (event) => {
+            let target = event.target;
+
+            target.parentNode.parentNode.remove();
+          });
+
+          // adding visiblity for trash icon
+          row.addEventListener("mouseover", (event) => {
+            let parentNode = event.target.parentNode;
+
+            if (parentNode instanceof HTMLTableRowElement) {
+              parentNode.childNodes[2].childNodes[0].style.visibility =
+                "visible";
+            }
+          });
+
+          // removing visiblity for trash icon
+          row.addEventListener("mouseleave", (event) => {
+            let parentNode = event.target;
+
+            if (parentNode instanceof HTMLTableRowElement) {
+              parentNode.childNodes[2].childNodes[0].style.visibility =
+                "hidden";
+            }
+          });
+
+          input.value = "";
+        }
+      });
+
+      mode.addEventListener("click", () => {
+        if (document.body.style.backgroundColor === "var(--bs-dark)") {
+          // light mode
+          lightMode = true;
+
+          document.body.style.backgroundColor = "var(--bs-light)";
+          document.body.style.color = "var(--bs-gray-dark)";
+
+          document.querySelector(".mode").src = "asset/moon-stars-fill.svg";
+
+          changeTrashIcon(
+            document.getElementsByClassName("trash"),
+            "asset/trash.svg"
+          );
+        } else {
+          //dark mode
+          lightMode = false;
+
+          document.body.style.backgroundColor = "var(--bs-dark)";
+          document.body.style.color = "var(--bs-light)";
+
+          document.querySelector(".mode").src = "asset/brightness-high.svg";
+
+          changeTrashIcon(
+            document.getElementsByClassName("trash"),
+            "asset/trash-fill.svg"
+          );
+        }
+      });
+
+      function changeTrashIcon(array, path) {
+        for (const img of array) {
+          img.src = path;
+        }
+      }
+    </script>
+  </body>
+</html>
