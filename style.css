@@ -71,7 +71,7 @@ div {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  width: 40%;
+  min-width: 40%;
 }
 
 table {
@@ -90,7 +90,7 @@ input[type="checkbox"] {
 }
 
 .input {
-  width: 70%;
+  min-width: 70%;
   height: 3rem;
   border-radius: 0.5rem;
   padding: 0.3rem;
